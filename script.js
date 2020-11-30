@@ -37,6 +37,11 @@
     }
   })()
 
+  /**
+   * entry point with panorama image
+   * @param {Object} file panorama image file
+   * @param {Boolean} bSave flag to determine either to save or not
+   */
   function processFile(file, bSave) {
     bSave && (async () => {
       let b64Panorama = await toBase64(file);
