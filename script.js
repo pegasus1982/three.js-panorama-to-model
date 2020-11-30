@@ -50,43 +50,44 @@
 
     $('#upload-container').hide();
     $('#canvas-container').show();
-    var scene = new SceneManager(document.getElementById('canvas-container'));
+    var scene = new SceneManager('canvas-container');
+    scene.updatePanorama(file);
 
     window.scene = scene;
   }
 
-  var dragDropInput = document.getElementById('drag-drop-input');
+  var dragDropInput = $('#drag-drop-input');
 
-  document.getElementById('input-image-file').addEventListener('change', function (event) {
+  $('#input-image-file').on('change', function (event) {
     if (event.target && event.target.files && event.target.files.length) {
       let file = event.target.files[0];
       processFile(file, true);
     }
   })
 
-  dragDropInput.addEventListener('click', function () {
+  dragDropInput.on('click', function () {
     document.getElementById('input-image-file').click();
   })
 
-  dragDropInput.addEventListener('dragover', function (event) {
+  dragDropInput.on('dragover', function (event) {
     event.preventDefault();
     event.stopPropagation();
     event.target.classList.add('dragging');
   })
 
-  dragDropInput.addEventListener('dragleave', function (event) {
+  dragDropInput.on('dragleave', function (event) {
     event.preventDefault();
     event.stopPropagation();
     event.target.classList.remove('dragging');
   })
 
-  dragDropInput.addEventListener('drop', function (event) {
+  dragDropInput.on('drop', function (event) {
     event.preventDefault();
     event.stopPropagation();
-    event.target.classList.remove('dragging');
-    if (event.dataTransfer) {
-      if (event.dataTransfer.files.length) {
-        let file = event.dataTransfer.files[0];
+    event.originalEvent.target.classList.remove('dragging');
+    if (event.originalEvent.dataTransfer) {
+      if (event.originalEvent.dataTransfer.files.length) {
+        let file = event.originalEvent.dataTransfer.files[0];
         processFile(file, true);
       }
     }
