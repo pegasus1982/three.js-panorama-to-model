@@ -1,0 +1,1 @@
+var scene = new SceneManager(document.getElementById('#canvas-container'));
