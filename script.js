@@ -33,7 +33,7 @@
     if (b64Panorama) {
       let blob = b64toBlob(b64Panorama);
       let file = new File([blob], 'panorama.jpg');
-      processFile(file, false)
+      createScene(file, false)
     }
   })()
 
@@ -42,7 +42,7 @@
    * @param {Object} file panorama image file
    * @param {Boolean} bSave flag to determine either to save or not
    */
-  function processFile(file, bSave) {
+  function createScene(file, bSave) {
     bSave && (async () => {
       let b64Panorama = await toBase64(file);
       saveToLocal('panorama-image', b64Panorama);
@@ -54,7 +54,15 @@
     scene.updatePanorama(file);
     scene.initializeRoomGizmo(4);
 
+    createSettingPanel();
+
     window.scene = scene;
+  }
+
+  function createSettingPanel() {
+    var settingPanel = new SettingPanel('#canvas-container');
+
+    window.settingPanel = settingPanel;
   }
 
   var dragDropInput = $('#drag-drop-input');
