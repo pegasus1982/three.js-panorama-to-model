@@ -52,6 +52,7 @@
     $('#canvas-container').show();
     var scene = new SceneManager('canvas-container');
     scene.updatePanorama(file);
+    scene.initializeRoomGizmo(4);
 
     window.scene = scene;
   }
