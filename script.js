@@ -1,1 +1,1 @@
-var scene = new SceneManager(document.getElementById('#canvas-container'));
+var scene = new SceneManager(document.getElementById('canvas-container'));
