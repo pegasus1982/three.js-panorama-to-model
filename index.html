@@ -4,12 +4,20 @@
   <script type="text/javascript" src="https://threejs.org/build/three.js"></script>
   <script type="text/javascript" src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
   <script src="./lib/sceneManager.js"></script>
 
   <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div id="canvas-container"></div>
+    <div id="upload-container">
+      <div id="drag-drop-input">
+        <div>Drag & drop panorama image file.<br>Or click to browse.</div>
+      </div>
+      <input id="input-image-file" type="file" accept="image/*" hidden>
+    </div>
+    <div id="canvas-container" style="display: none;"></div>
   </body>
   <script src="./script.js"></script>
 </html>

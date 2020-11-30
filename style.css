@@ -2,6 +2,28 @@ body {
   margin: 0;
 }
 
+#upload-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#upload-container #drag-drop-input {
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+  text-align: center;
+  padding: 120px;
+}
+
+#upload-container #drag-drop-input.dragging {
+  border-color: #4368a9;
+}
+
 #canvas-container {
   width: 100%;
   height: 100%;
