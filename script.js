@@ -62,6 +62,9 @@
   function createSettingPanel() {
     var settingPanel = new SettingPanel('#canvas-container');
 
+    settingPanel.addEventListener('onPanoramaRotationChanged', (value) => {
+      console.log('pano rotation changed', value);
+    })
     window.settingPanel = settingPanel;
   }
 
