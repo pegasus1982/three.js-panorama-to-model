@@ -64,18 +64,24 @@
 
     settingPanel.addEventListener('onPanoramaRotationChanged', (value) => {
       window.scene.adjustPanoramaRotation(value);
-    })
+    });
+
     settingPanel.addEventListener('onPanoramaImageChanged', (file) => {
       (async () => {
         let b64Panorama = await toBase64(file);
         saveToLocal('panorama-image', b64Panorama);
       })();
       window.scene.updatePanorama(file);
-    })
+    });
 
     settingPanel.addEventListener('onRoomGizmoVertexCountChanged', count => {
       window.scene.updateRoomGizmo(count);
+    });
+
+    settingPanel.addEventListener('onCameraTypeChanged', type => {
+      window.scene.updateCameraType(type);
     })
+
     window.settingPanel = settingPanel;
   }
 
@@ -84,7 +90,7 @@
   $('#input-image-file').on('change', function (event) {
     if (event.target && event.target.files && event.target.files.length) {
       let file = event.target.files[0];
-      processFile(file, true);
+      createScene(file, true);
     }
   })
 
@@ -111,7 +117,7 @@
     if (event.originalEvent.dataTransfer) {
       if (event.originalEvent.dataTransfer.files.length) {
         let file = event.originalEvent.dataTransfer.files[0];
-        processFile(file, true);
+        createScene(file, true);
       }
     }
   })
