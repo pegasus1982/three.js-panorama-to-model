@@ -52,7 +52,7 @@
     $('#canvas-container').show();
     var scene = new SceneManager('canvas-container');
     scene.updatePanorama(file);
-    scene.initializeRoomGizmo(4);
+    scene.updateRoomGizmo(4);
 
     createSettingPanel();
 
@@ -71,6 +71,10 @@
         saveToLocal('panorama-image', b64Panorama);
       })();
       window.scene.updatePanorama(file);
+    })
+
+    settingPanel.addEventListener('onRoomGizmoVertexCountChanged', count => {
+      window.scene.updateRoomGizmo(count);
     })
     window.settingPanel = settingPanel;
   }
