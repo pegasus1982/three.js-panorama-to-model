@@ -63,7 +63,14 @@
     var settingPanel = new SettingPanel('#canvas-container');
 
     settingPanel.addEventListener('onPanoramaRotationChanged', (value) => {
-      console.log('pano rotation changed', value);
+      window.scene.adjustPanoramaRotation(value);
+    })
+    settingPanel.addEventListener('onPanoramaImageChanged', (file) => {
+      (async () => {
+        let b64Panorama = await toBase64(file);
+        saveToLocal('panorama-image', b64Panorama);
+      })();
+      window.scene.updatePanorama(file);
     })
     window.settingPanel = settingPanel;
   }
