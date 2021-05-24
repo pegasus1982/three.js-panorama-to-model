@@ -145,8 +145,8 @@ function onWindowResize() {
 
 function setupDistortionEffectAndGUI(effect) {
   var guiParameters = {
-    horizontalFOV: 140,
-    strength: 1,
+    horizontalFOV: 90,
+    strength: 0,
     cylindricalRatio: 2,
   };
 
